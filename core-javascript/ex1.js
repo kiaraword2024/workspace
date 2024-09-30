@@ -27,3 +27,7 @@ let persona ={
 }
 
 console.log(persona);
+
+let digito = prompt("Ingresa un dígito:");
+console.log(digito);
+alert("digido");
