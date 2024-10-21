@@ -9,12 +9,3 @@ else{
 }
 
 console.log(Habitantes);
-
-let Kiara = {
-    altura:1.60,
-    edad:41
-};
-for(let property in Kiara){
-    console.log(property, Kiara[property]);
-}
-
