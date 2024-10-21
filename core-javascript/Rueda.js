@@ -1,4 +1,3 @@
-
 let diametro =0.7
 let grosor =0.1
 let FiatStrada = diametro >1.4
