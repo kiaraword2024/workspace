@@ -1,4 +1,3 @@
-
 const persons = [
   { firstname: 'Malcom', lastname: 'Reynolds',likes:},
   { firstname: 'Kaylee', lastname: 'Frye' },
@@ -14,4 +13,6 @@ function login(firstname, lastname) {
   }
   return ('No login');
 }
-console.log(login('Montse', 'Reynolds')); 
+console.log(login('Montse', 'Reynolds'));  
+
+

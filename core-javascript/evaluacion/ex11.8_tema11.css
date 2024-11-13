@@ -1,0 +1,22 @@
+#total {
+    border: 1px solid #1f25d6;
+    padding: 10px;
+}
+#post-titles {
+    padding: 10px;   
+    margin: 10px; 
+    list-style-type: circle;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #1f25d6;
+    padding: 10px;
+}
+th {
+    background-color: #f4f4f4;
+}

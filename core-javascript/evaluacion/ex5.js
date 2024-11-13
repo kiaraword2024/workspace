@@ -1,5 +1,5 @@
 
-function verDigito(digito, numero) {
+function verDigito(digito, numero){
     
     let digitoStr = digito.toString();
     let numeroStr = numero.toString();
