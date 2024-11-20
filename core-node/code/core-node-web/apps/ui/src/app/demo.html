@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App de Cuidado Familiar</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .tabs {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+    .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 5px 5px 0 0;
+    }
+    .tab.active {
+        background-color: #f0f0f0;
+        border-bottom: none;
+    }
+    .tab-content {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 0 0 5px 5px;
+    }
+    .tab-content.active {
+        display: block;
+    }
+    .card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .card-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .card-description {
+        color: #666;
+        margin-bottom: 15px;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: #f0f0f0;
+    }
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+</style>
+</head>
+<body>
+<h1>App de Cuidado Familiar</h1>
+
+<div class="tabs">
+    <div class="tab active" data-tab="juegos">Juegos</div>
+    <div class="tab" data-tab="comunicacion">Comunicación</div>
+    <div class="tab" data-tab="clasificacion">Clasificación</div>
+</div>
+
+<div id="juegos" class="tab-content active">
+    <div class="card">
+        <div class="card-title">Minijuegos</div>
+        <div class="card-description">Juega y gana puntos con tu familiar</div>
+        <button onclick="jugarMinijuego('abuelo')">Jugar como Abuelo</button>
+        <button onclick="jugarMinijuego('nieto')">Jugar como Nieto</button>
+        <p>¡Haz clic en un botón para jugar y ganar puntos!</p>
+    </div>
+</div>
+
+<div id="comunicacion" class="tab-content">
+    <div class="card">
+        <div class="card-title">Comunicación</div>
+        <div class="card-description">Envía mensajes a tu familiar</div>
+        <input type="text" id="mensajeInput" placeholder="Escribe tu mensaje aquí">
+        <button onclick="enviarMensaje()">Enviar</button>
+    </div>
+</div>
+
+<div id="clasificacion" class="tab-content">
+    <div class="card">
+        <div class="card-title">Tabla de Clasificación</div>
+        <div class="card-description">Compara tus puntos con tu familiar</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Jugador</th>
+                    <th>Puntos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="https://via.placeholder.com/40" alt="Abuelo" class="avatar">
+                        Abuelo
+                    </td>
+                    <td id="puntosAbuelo">0</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://via.placeholder.com/40" alt="Nieto" class="avatar">
+                        Nieto
+                    </td>
+                    <td id="puntosNieto">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // Funcionalidad de las pestañas
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Estado de la aplicación
+    let puntos = { abuelo: 0, nieto: 0 };
+
+    // Función para jugar minijuego
+    function jugarMinijuego(jugador) {
+        const puntosGanados = Math.floor(Math.random() * 10) + 1;
+        puntos[jugador] += puntosGanados;
+        actualizarPuntuacion();
+        alert('¡Kiara ha ganado 70 puntos!');
+    }
+
+    // Función para enviar mensaje
+    function enviarMensaje() {
+        const mensajeInput = document.getElementById('mensajeInput');
+        const mensaje = mensajeInput.value;
+        if (mensaje) {
+            console.log("Mensaje enviado:", mensaje);
+            alert("Mensaje enviado: " + mensaje);
+            mensajeInput.value = '';
+        } else {
+            alert("Por favor, escribe un mensaje antes de enviar.");
+        }
+    }
+
+    // Función para actualizar la puntuación en la tabla
+    function actualizarPuntuacion() {
+        document.getElementById('puntosAbuelo').textContent = puntos.abuelo;
+        document.getElementById('puntosNieto').textContent = puntos.nieto;
+    }
+</script>
+</body>
+</html>
+
