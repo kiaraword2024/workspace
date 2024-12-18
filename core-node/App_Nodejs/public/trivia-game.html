@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trivia Multiplayer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Delius&family=Delius+Swash+Caps&family=DynaPuff:wght@400..700&family=Freckle+Face&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="/static/trivia.js"></script>
+  </head>
+  <body>
+    <h1>Abuelos VS Nietos</h1>
+    <!-- Pantalla principal -->
+    <div id="mainScreen" class="screen active">
+      <div class="card">
+        <div class="card-title">Trivia Multiplayer</div>
+        <select id="categoria" class="card">
+          <option value="">Todas las categorías</option>
+          <option value="9">Cultura General</option>
+          <option value="17">Ciencia y Naturaleza</option>
+          <option value="18">Tecnología</option>
+          <option value="21">Deporte</option>
+          <option value="22">Geografía</option>
+          <option value="23">Historia</option>
+        </select>
+        <select id="dificultad"class="card" >
+          <option value="easy">Fácil</option>
+          <option value="medium" selected>Medio</option>
+          <option value="hard">Difícil</option>
+        </select>
+        <div class="card-description">Elige quién va a jugar y prepárate a practicar tu Inglés:</div>
+        <div class="game-buttons">
+          <button id="Abuelo" class="game-button" onclick="iniciarJuego()">
+            Jugar como Abuelo
+          </button>
+          <button id="Nieto" class="game-button" onclick="iniciarJuego()">
+            Jugar como Nieto
+          </button>
+        </div>
+      </div>
+    </div>
+<!-- Pantalla juego -->
+    <div id="juego-trivia" style="display: none">
+      <div id="pregunta-container"></div>
+      <div id="respuestas-container"></div>
+      <div id="respuesta-correcta" style="display: none;">
+        <span>Respuesta Correcta: </span><span id="respuesta-correcta-texto"></span>
+      </div>
+      <button id="btn-reiniciar" onclick="reiniciarJuego()" style="display: none">
+        Jugar de Nuevo
+      </button>
+    </div>
+    <!-- Pantalla de resultados -->
+    <div id="resultScreen" class="screen" style="display: none">
+      <div class="card">
+        <div class="card-title">Resultado</div>
+        <div id="result">
+          <p>¡<span id="winner"></span>!</p>
+        </div>
+        <div class="score">
+          <span id="puntosAbuelo"></span>
+          <span id="puntosNieto"></span>
+        </div>
+        <button onclick="reiniciarJuego()" class="game-button">
+          Jugar de Nuevo
+        </button>
+        <div class="game-buttons">
+          <button
+            class="game-button"
+            onclick="location.href='/static/index.html'"">Volver</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
